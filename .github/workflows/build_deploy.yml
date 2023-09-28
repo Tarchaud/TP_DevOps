@@ -29,7 +29,7 @@ jobs:
         run: npm install
 
       - name: Build Angular App  🔧
-        run: npm run build-deploy
+        run: npm run build_deploy
         
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@releases/v4
