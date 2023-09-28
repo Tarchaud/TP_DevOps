@@ -31,7 +31,7 @@ jobs:
       - name: Build Angular App  🔧
         run: npm run build_deploy
         
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
           branch: gh-pages 
