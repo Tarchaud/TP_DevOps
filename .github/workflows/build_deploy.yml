@@ -1,5 +1,4 @@
-name: Deploy to GitHub Pages
-
+name: Build and Deploy
 on:
   push:
     branches:
@@ -7,28 +6,21 @@ on:
   pull_request:
     branches:
       - master
-
+    
+permissions:
+  contents: write
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+      - name: Install and Build 🔧
+        run: |
+          npm ci
+          npm install
+          npm run build
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
-          node-version: 14
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build Angular app
-        run: ng build --prod
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          deploy_key: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/tp-pipeline
+          folder: dist
