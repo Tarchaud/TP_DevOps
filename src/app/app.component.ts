@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TP_Pipeline';
+  tmp = "test linter et build and deploy";
 }
